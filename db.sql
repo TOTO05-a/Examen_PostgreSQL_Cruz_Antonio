@@ -1,54 +1,48 @@
-CREATE TABLE clientes(
-    nombre VARCHAR(30) NOT NULL,
-    apellido VARCHAR(30) NOT NULL,
-    email VARCHAR(80) NOT NULL UNIQUE,
-    telefono VARCHAR(15) NOT NULL,
-    PRIMARY KEY (email)
-    direccion VARCHAR(100) NOT NULL,
-    historial_alquileres TEXT NOT NULL
+-- Creación de la base de datos para la gestión de alquiler de películas
+CREATE TABLE sucursales (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    direccion VARCHAR(150) NOT NULL,
+    telefono VARCHAR(15) NOT NULL
+);
+CREATE TABLE categorias (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE
 );
 
-CREATE TABLE peliculas(
-    id INT AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE peliculas (
+    id SERIAL PRIMARY KEY,
     titulo VARCHAR(100) NOT NULL,
-    genero VARCHAR(50) NOT NULL,
-    director VARCHAR(50) NOT NULL,
-    año_lanzamiento INT NOT NULL,
-    disponibilidad BOOLEAN NOT NULL,
-    precio_alquiler DECIMAL(5,2) NOT NULL
+    genero_id INT NOT NULL,
+    director VARCHAR(100),
+    anio_lanzamiento INT CHECK (anio_lanzamiento > 1888), -- Año de lanzamiento debe ser despues de 1888
+    disponibilidad BOOLEAN NOT NULL DEFAULT TRUE,
+    precio_alquiler DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (genero_id) REFERENCES categorias(id)
 );
 
-CREATE TABLE alquileres(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cliente_email VARCHAR(80) NOT NULL,
+CREATE TABLE clientes (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    contacto VARCHAR(50) NOT NULL,
+    direccion VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE alquileres (
+    id SERIAL PRIMARY KEY,
+    cliente_id INT NOT NULL,
     pelicula_id INT NOT NULL,
     fecha_inicio DATE NOT NULL,
-    fecha_devolucion DATE NOT NULL,
-    costo_total DECIMAL(5,2) NOT NULL,
-    FOREIGN KEY (cliente_email) REFERENCES clientes(email),
+    fecha_devolucion DATE,
+    costo_total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id),
     FOREIGN KEY (pelicula_id) REFERENCES peliculas(id)
 );
 
-CREATE TABLE pagos(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    cliente_email VARCHAR(80) NOT NULL,
+CREATE TABLE pagos (
+    id SERIAL PRIMARY KEY,
+    cliente_id INT NOT NULL,
     fecha DATE NOT NULL,
-    monto DECIMAL(5,2) NOT NULL,
-    FOREIGN KEY (cliente_email) REFERENCES clientes
-    );
-
-    CREATE TABLE categorias(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(35) NOT NULL UNIQUE,
-        descripcion TEXT NOT NULL 
-    );
-
-
-    CREATE TABLE sucursales(
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        nombre VARCHAR(50) NOT NULL,
-        direccion VARCHAR(100) NOT NULL,
-        inventario TEXT NOT NULL
-    );
-
-    
+    monto DECIMAL(10, 2) NOT NULL CHECK (monto > 0),
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);
