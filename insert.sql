@@ -1,5 +1,3 @@
--- Insertar datos de ejemplo en la base de datos MOVIERENTAL
-
 -- Clientes
 INSERT INTO clientes (nombre, contacto, direccion) VALUES
 ('Alejandro Gómez', '555-9876', 'Calle de los Olivos 12'),
@@ -25,38 +23,38 @@ INSERT INTO peliculas (titulo, genero, director, año_lanzamiento, disponibilida
 ('Rápidos y Furiosos 8', 'Acción', 'F. Gary Gray', 2017, TRUE, 4.99),
 ('Rápidos y Furiosos: Hobbs & Shaw', 'Acción', 'David Leitch', 2019, TRUE, 3.99),
 ('Rápidos y Furiosos 9', 'Acción', 'Justin Lin', 2021, TRUE, 4.49),
-('Rápidos y Furiosos 10', 'Acción', 'Louis Leterrier', 2023, TRUE, 4.99);
+('Rápidos y Furiosos 10', 'Acción', 'Louis Leterrier', 2026, TRUE, 4.99);
 
 -- Sucursales
 INSERT INTO sucursales (nombre, direccion, telefono) VALUES
-('Sucursal Centro', 'Avenida Principal 123', '555-1111'),
-('Sucursal Norte', 'Calle Norte 456', '555-2222'),
-('Sucursal Sur', 'Calle Sur 789', '555-3333'),
-('Sucursal Este', 'Avenida Este 101', '555-4444'),
-('Sucursal Oeste', 'Boulevard Oeste 202', '555-5555');
+('Sucursal zona1', 'Sexta Avenida', '555-1111'),
+('Sucursal zona2', 'Calle 13', '555-2222'),
+('Sucursal zona3', 'Calle sur 9', '555-3333'),
+('Sucursal zona4', 'Avenida Los olivares', '555-4444'),
+('Sucursal zona5', 'Boulevard Oeste 202', '555-5555');
 
 -- Alquileres
 INSERT INTO alquileres (cliente_id, pelicula_id, fecha_inicio, fecha_devolucion, costo_total) VALUES
-(1, 1, '2023-10-01', '2023-10-05', 3.49),
-(2, 2, '2023-10-02', '2023-10-06', 2.99),
-(3, 3, '2023-10-03', '2023-10-07', 3.99),
-(4, 4, '2023-10-04', '2023-10-08', 3.49),
-(5, 5, '2023-10-05', '2023-10-09', 4.99),
-(6, 6, '2023-10-06', '2023-10-10', 3.99),
-(7, 7, '2023-10-07', '2023-10-11', 4.49),
-(8, 8, '2023-10-08', '2023-10-12', 4.99),
-(9, 9, '2023-10-09', '2023-10-13', 3.99),
-(10, 10, '2023-10-10', '2023-10-14', 4.49);
+(1, 1, '2026-10-01', '2026-10-05', 3.49),
+(2, 2, '2026-10-02', '2026-10-06', 2.99),
+(3, 3, '2026-10-03', '2026-10-07', 3.99),
+(4, 4, '2026-10-04', '2026-10-08', 3.49),
+(5, 5, '2026-10-05', '2026-10-09', 4.99),
+(6, 6, '2026-10-06', '2026-10-10', 3.99),
+(7, 7, '2026-10-07', '2026-10-11', 4.49),
+(8, 8, '2026-10-08', '2026-10-12', 4.99),
+(9, 9, '2026-10-09', '2026-10-13', 3.99),
+(10, 10, '2026-10-10', '2026-10-14', 4.49);
 
 -- Pagos
 INSERT INTO pagos (cliente_id, fecha, monto) VALUES
-(1, '2023-10-05', 3.49),
-(2, '2023-10-06', 2.99),
-(3, '2023-10-07', 3.99),
-(4, '2023-10-08', 3.49),
-(5, '2023-10-09', 4.99),
-(6, '2023-10-10', 3.99),
-(7, '2023-10-11', 4.49),
-(8, '2023-10-12', 4.99),
-(9, '2023-10-13', 3.99),
-(10, '2023-10-14', 4.49);
+(1, '2026-10-05', 3.49),
+(2, '2026-10-06', 2.99),
+(3, '2026-10-07', 3.99),
+(4, '2026-10-08', 3.49),
+(5, '2026-10-09', 4.99),
+(6, '2026-10-10', 3.99),
+(7, '2026-10-11', 4.49),
+(8, '2026-10-12', 4.99),
+(9, '2026-10-13', 3.99),
+(10, '2026-10-14', 4.49);

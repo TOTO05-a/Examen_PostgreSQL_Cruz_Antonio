@@ -15,7 +15,7 @@ CREATE TABLE peliculas (
     titulo VARCHAR(100) NOT NULL,
     genero_id INT NOT NULL,
     director VARCHAR(100),
-    anio_lanzamiento INT CHECK (anio_lanzamiento > 1888), -- Año de lanzamiento debe ser despues de 1888
+    año_lanzamiento INT CHECK (año_lanzamiento > 1888), -- Año de lanzamiento debe ser despues de 1888
     disponibilidad BOOLEAN NOT NULL DEFAULT TRUE,
     precio_alquiler DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (genero_id) REFERENCES categorias(id)
